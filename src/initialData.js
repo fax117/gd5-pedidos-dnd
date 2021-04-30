@@ -10,16 +10,8 @@ const initialData = {
     "salida-de-planta": {
       id: "salida-de-planta",
       title: "Salida de planta",
-      orderIds: ["pedido-1", "pedido-2", "pedido-5"],
+      orderIds: ["order1", "order2", "order3"],
     },
-  },
-  columnOrder: ["salida-de-planta"],
-};
-
-export default initialData;
-
-/*
-,
     "local-delivery": {
       id: "local-delivery",
       title: "Centro de envio local",
@@ -28,7 +20,7 @@ export default initialData;
     "proceso-entrega": {
       id: "proceso-entrega",
       title: "En proceso de entrega",
-      orderIds: ["pedido-3", "pedido-4"],
+      orderIds: ["order4", "order5"],
     },
     entregado: {
       id: "entregado",
@@ -45,9 +37,7 @@ export default initialData;
       title: "Entrega fallida",
       orderIds: [],
     },
-
-
-    ,
+  },
   columnOrder: [
     "salida-de-planta",
     "local-delivery",
@@ -56,4 +46,6 @@ export default initialData;
     "entrega-completa",
     "entrega-fallida",
   ],
-*/
+};
+
+export default initialData;

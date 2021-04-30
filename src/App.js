@@ -51,8 +51,8 @@ export default function App() {
       {state.columnOrder.map((columnId) => {
         const column = state.columns[columnId];
         const orders = column.orderIds.map((orderId) => state.orders[orderId]);
-
-        console.log(column.orderIds);
+        //console.log(column.orderIds);
+        //console.log(column);
         console.log(orders);
         return <Column key={column.id} column={column} orders={orders} />;
       })}
