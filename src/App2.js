@@ -1,7 +1,7 @@
 import "./styles.css";
-import initialData from "./initialData";
+import initialData from "./initialData2";
 import { useState } from "react";
-import Column from "./Column";
+import Column from "./Column.jsx";
 import { DragDropContext } from "react-beautiful-dnd";
 
 export default function App() {
@@ -24,15 +24,15 @@ export default function App() {
 
     // Get relevant column and replace order.
     const col = state.columns[source.droppableId];
-    const newOrderIds = [...col.orderIds];
+    const newTaskIds = [...col.taskIds];
     // Remove item from list
-    newOrderIds.splice(source.index, 1);
+    newTaskIds.splice(source.index, 1);
     // Place it back in same list in new position.
-    newOrderIds.splice(destination.index, 0, draggableId);
+    newTaskIds.splice(destination.index, 0, draggableId);
 
     const newColumn = {
       ...col,
-      orderIds: newOrderIds,
+      taskIds: newTaskIds,
     };
 
     const newState = {
@@ -50,11 +50,9 @@ export default function App() {
     <DragDropContext onDragEnd={onDragEnd}>
       {state.columnOrder.map((columnId) => {
         const column = state.columns[columnId];
-        const orders = column.orderIds.map((orderId) => state.orders[orderId]);
-
-        console.log(column.orderIds);
-        console.log(orders);
-        return <Column key={column.id} column={column} orders={orders} />;
+        const tasks = column.taskIds.map((tid) => state.tasks[tid]);
+        //console.log(tasks);
+        return <Column key={column.id} column={column} tasks={tasks} />;
       })}
     </DragDropContext>
   );
