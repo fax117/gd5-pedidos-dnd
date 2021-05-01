@@ -1,48 +1,46 @@
 const initialData = {
-  orders: {
-    order1: { id: "order-1", content: "Order 1" },
-    order2: { id: "order-2", content: "Order 2" },
-    order3: { id: "order-3", content: "Order 3" },
-    order4: { id: "order-4", content: "Order 4" },
-    order5: { id: "order-5", content: "Order 5" },
+  tasks: {
+    "task-1": { id: "task-1", content: "Pedido 1" },
+    "task-2": { id: "task-2", content: "PEDIDO 2" },
+    "task-3": { id: "task-3", content: "PEDIDO 3" },
+    "task-4": { id: "task-4", content: "PEDIDO 4" },
+    "task-5": { id: "task-5", content: "PEDIDO 5" },
+    "task-6": { id: "task-6", content: "PEDIDO 6" },
+    "task-7": { id: "task-7", content: "PEDIDO 7" },
+    "task-8": { id: "task-8", content: "PEDIDO 8" },
   },
   columns: {
     "salida-de-planta": {
       id: "salida-de-planta",
       title: "Salida de planta",
-      orderIds: ["order1", "order2", "order3"],
+      taskIds: ["task-1", "task-2", "task-3"],
     },
     "local-delivery": {
       id: "local-delivery",
       title: "Centro de envio local",
-      orderIds: [],
+      taskIds: ["task-4"],
     },
     "proceso-entrega": {
       id: "proceso-entrega",
       title: "En proceso de entrega",
-      orderIds: ["order4", "order5"],
-    },
-    entregado: {
-      id: "entregado",
-      title: "Entregado",
-      orderIds: [],
+      taskIds: ["task-5", "task-6"],
     },
     "entrega-completa": {
       id: "entrega-completa",
       title: "Entrega Completa",
-      orderIds: [],
+      taskIds: [],
     },
     "entrega-fallida": {
       id: "entrega-fallida",
       title: "Entrega fallida",
-      orderIds: [],
+      taskIds: [],
     },
   },
+  // Facilitate reordering of the columns
   columnOrder: [
     "salida-de-planta",
     "local-delivery",
     "proceso-entrega",
-    "entregado",
     "entrega-completa",
     "entrega-fallida",
   ],
