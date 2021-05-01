@@ -9,6 +9,20 @@ import Column from "./Column2";
 const Container = styled.div`
   display: flex;
 `;
+
+const Button = styled.button`
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+`;
+
 /**
  * se guarda el penúltimo stado, ya que el último estado no se puede actualizar sincrónicamente porque se rompe React <3
  */
@@ -127,34 +141,37 @@ class App extends React.Component {
 
   render() {
     return (
-      <DragDropContext
-        onDragStart={this.onDragStart}
-        onDragUpdate={this.onDragUpdate}
-        onDragEnd={this.onDragEnd}
-      >
-        <Droppable
-          droppableId='all-columns'
-          direction='horizontal'
-          type='column'
+      <div>
+        <DragDropContext
+          onDragStart={this.onDragStart}
+          onDragUpdate={this.onDragUpdate}
+          onDragEnd={this.onDragEnd}
         >
-          {(provided) => (
-            <Container {...provided.droppableProps} ref={provided.innerRef}>
-              {this.state.columnOrder.map((columnId, index) => {
-                const column = this.state.columns[columnId];
-                return (
-                  <InnerList
-                    key={column.id}
-                    column={column}
-                    taskMap={this.state.tasks}
-                    index={index}
-                  />
-                );
-              })}
-              {provided.placeholder}
-            </Container>
-          )}
-        </Droppable>
-      </DragDropContext>
+          <Droppable
+            droppableId='all-columns'
+            direction='horizontal'
+            type='column'
+          >
+            {(provided) => (
+              <Container {...provided.droppableProps} ref={provided.innerRef}>
+                {this.state.columnOrder.map((columnId, index) => {
+                  const column = this.state.columns[columnId];
+                  return (
+                    <InnerList
+                      key={column.id}
+                      column={column}
+                      taskMap={this.state.tasks}
+                      index={index}
+                    />
+                  );
+                })}
+                {provided.placeholder}
+              </Container>
+            )}
+          </Droppable>
+        </DragDropContext>
+        <Button>Crear Pedido</Button>
+      </div>
     );
   }
 }
