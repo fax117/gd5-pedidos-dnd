@@ -9,7 +9,9 @@ import Column from "./Column2";
 const Container = styled.div`
   display: flex;
 `;
-
+/**
+ * se guarda el penúltimo stado, ya que el último estado no se puede actualizar sincrónicamente porque se rompe React <3
+ */
 const initial_state = {
   data: localStorage.getItem("data")
     ? JSON.parse(localStorage.getItem("data"))
@@ -39,7 +41,8 @@ class App extends React.Component {
         const newColumnOrder = Array.from(this.state.columnOrder);
         newColumnOrder.splice(source.index, 1);
         newColumnOrder.splice(destination.index, 0, draggableId);
-
+        console.log(this.state);
+        localStorage.setItem("data", JSON.stringify(this.state));
         return this.setState((lastState) => ({
           ...lastState,
           columnOrder: newColumnOrder,
@@ -75,7 +78,8 @@ class App extends React.Component {
         const newTaskIds = Array.from(home.taskIds);
         newTaskIds.splice(source.index, 1);
         newTaskIds.splice(destination.index, 0, draggableId);
-
+        console.log(this.state);
+        localStorage.setItem("data", JSON.stringify(this.state));
         return this.setState((lastState) => ({
           ...lastState,
           columns: {
@@ -96,8 +100,9 @@ class App extends React.Component {
       const foreignTaskIds = [...foreign.taskIds];
       foreignTaskIds.splice(destination.index, 0, draggableId);
 
-      console.log(this.state);
       //localStorage.setItem("data", JSON.stringify(this.state));
+      console.log(this.state);
+      localStorage.setItem("data", JSON.stringify(this.state));
       return this.setState((lastState) => ({
         ...lastState,
         columns: {
@@ -118,8 +123,6 @@ class App extends React.Component {
       //localStorage.setItem("data", JSON.stringify(newState));
       //return newState;
     }
-    console.log(this.state);
-    localStorage.setItem("data", JSON.stringify(this.state));
   };
 
   render() {
